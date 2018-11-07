@@ -46,7 +46,7 @@ namespace PetShop.ConsoleApp.Infrastructure
 
             petFromDB.Name = updatedPet.Name;
             
-            return petFromDB;
+            return updatedPet;
         }
 
         public Pet FindById(int id)
