@@ -41,7 +41,12 @@ namespace PetShop.ConsoleApp.Infrastructure
 
         public Pet EditPet(Pet updatedPet)
         {
-            throw new NotImplementedException();
+            var petFromDB = FindById(updatedPet.Id);
+            if (petFromDB == null) return null;
+
+            petFromDB.Name = updatedPet.Name;
+            
+            return petFromDB;
         }
 
         public Pet FindById(int id)
