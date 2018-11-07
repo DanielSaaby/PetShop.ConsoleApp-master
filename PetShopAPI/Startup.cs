@@ -76,7 +76,7 @@ namespace PetShopAPI
                     
             }
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
 
             //app.UseHttpsRedirection();
