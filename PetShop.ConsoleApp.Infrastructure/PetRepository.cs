@@ -41,12 +41,11 @@ namespace PetShop.ConsoleApp.Infrastructure
 
         public Pet EditPet(Pet updatedPet)
         {
-            var petFromDB = FindById(updatedPet.Id);
-            if (petFromDB == null) return null;
+            _ctx.Attach(updatedPet).State = EntityState.Modified;
+            _ctx.Attach(updatedPet).Reference(p => p.Owner).IsModified = true;
 
-            petFromDB.Name = updatedPet.Name;
-            
-            return petFromDB;
+            _ctx.SaveChanges();
+            return updatedPet;
         }
 
         public Pet FindById(int id)

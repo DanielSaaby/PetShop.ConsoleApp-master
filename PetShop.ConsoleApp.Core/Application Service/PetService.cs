@@ -56,12 +56,7 @@ namespace PetShop.ConsoleApp.Core.Application_Service
         {
             var pet = FindPetById(updatedPet.Id);
             pet.Name = updatedPet.Name;
-            pet.Type = updatedPet.Type;
-            pet.BirthDate = updatedPet.BirthDate;
-            pet.SoldDate = updatedPet.SoldDate;
-            pet.Color = updatedPet.Color;
-            pet.Owner = updatedPet.Owner;
-            pet.Price = updatedPet.Price;
+            
             return pet;
         }
 
