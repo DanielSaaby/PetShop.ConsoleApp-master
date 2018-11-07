@@ -57,6 +57,7 @@ namespace PetShopAPI
                 app.UseDeveloperExceptionPage();
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
+
                     var ctx = scope.ServiceProvider.GetService<PetAppContext>();
                     var ctxUser = scope.ServiceProvider.GetService<UserAppContext>();
                     DbInitializer.SeedDB(ctx);
@@ -64,7 +65,13 @@ namespace PetShopAPI
             }
             else
             {
-                app.UseHsts();
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<PetAppContext>();
+                    ctx.Database.EnsureCreated();
+                    app.UseHsts();
+                }
+                    
             }
 
             //app.UseHttpsRedirection();
