@@ -50,6 +50,7 @@ namespace PetShopAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Pet> Put(int id, [FromBody] Pet pet)
         {
+            pet.Id = id;
             return _petService.EditPet(pet);
         }
 

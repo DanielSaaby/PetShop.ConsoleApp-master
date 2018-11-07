@@ -54,10 +54,9 @@ namespace PetShop.ConsoleApp.Core.Application_Service
 
         public Pet EditPet(Pet updatedPet)
         {
-            var pet = FindPetById(updatedPet.Id);
-            pet.Name = updatedPet.Name;
-            _petRepository.EditPet(pet);
-            return pet;
+            
+            return _petRepository.EditPet(updatedPet);
+            
         }
 
         public List<Pet> ReadAll()

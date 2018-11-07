@@ -42,7 +42,7 @@ namespace PetShop.ConsoleApp.Infrastructure
         public Pet EditPet(Pet updatedPet)
         {
             _ctx.Attach(updatedPet).State = EntityState.Modified;
-            _ctx.Attach(updatedPet).Reference(p => p.Owner).IsModified = true;
+            _ctx.Entry(updatedPet).Reference(p => p.Owner).IsModified = true;
 
             _ctx.SaveChanges();
             return updatedPet;

@@ -19,16 +19,10 @@ namespace PetShop.ConsoleApp.Infrastructure
             //Write Fluent API configurations here
 
             //Property Configurations
-            modelBuilder.Entity<Owner>()
-                .HasMany(o => o.Pets)
-                .WithOne(p => p.Owner)
+            modelBuilder.Entity<Pet>()
+                
+                .HasOne(p => p.Owner).WithMany(o => o.Pets)
                 .OnDelete(DeleteBehavior.SetNull);
-            
-            
-
-            
-
-
         }
 
         public DbSet<Pet> Pets { get; set; }
