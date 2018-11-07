@@ -56,7 +56,7 @@ namespace PetShop.ConsoleApp.Core.Application_Service
         {
             var pet = FindPetById(updatedPet.Id);
             pet.Name = updatedPet.Name;
-            
+            _petRepository.EditPet(pet);
             return pet;
         }
 
@@ -95,7 +95,11 @@ namespace PetShop.ConsoleApp.Core.Application_Service
         public Pet FindPetById(int id)
         {
             var pet = _petRepository.FindById(id);
-            pet.Owner = _ownerRepository.SortById(pet.Owner.id);
+            if(pet.Owner != null)
+            {
+                pet.Owner = _ownerRepository.SortById(pet.Owner.id);
+            }
+            
             return pet;
         }
 
