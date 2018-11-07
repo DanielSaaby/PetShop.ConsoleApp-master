@@ -31,6 +31,8 @@ namespace PetShopAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();
             
             services.AddDbContext<PetAppContext>(opt => opt.UseSqlite("Data Source = PetApp.db"));
             
@@ -73,6 +75,9 @@ namespace PetShopAPI
                 }
                     
             }
+
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
 
             //app.UseHttpsRedirection();
             app.UseMvc();
