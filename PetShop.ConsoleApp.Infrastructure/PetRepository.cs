@@ -32,9 +32,11 @@ namespace PetShop.ConsoleApp.Infrastructure
             return pet;
         }
 
-        public Pet DeletePet(int Id)
+        public Pet DeletePet(int id)
         {
-            throw new NotImplementedException();
+            var petRemoved = _ctx.Remove(new Pet { Id = id }).Entity;
+            _ctx.SaveChanges();
+            return petRemoved;
         }
 
         public Pet EditPet(Pet updatedPet)
