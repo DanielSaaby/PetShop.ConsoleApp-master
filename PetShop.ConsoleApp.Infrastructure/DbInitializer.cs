@@ -9,8 +9,8 @@ namespace PetShop.ConsoleApp.Infrastructure
     {
         public static void SeedDB(PetAppContext ctx)
         {
-            ctx.Database.EnsureDeleted();
-            ctx.Database.EnsureCreated();
+            //ctx.Database.EnsureDeleted();
+            //ctx.Database.EnsureCreated();
 
             var owner1 = ctx.Owners.Add(new Owner()
             {
