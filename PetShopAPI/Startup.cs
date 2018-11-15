@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PetShop.ConsoleApp.Core.Application_Service;
 using PetShop.ConsoleApp.Core.Domain_Service;
+using PetShop.ConsoleApp.Core.Entities;
 using PetShop.ConsoleApp.Infrastructure;
 
 
@@ -41,6 +42,8 @@ namespace PetShopAPI
 
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IOwnerService, OwnerService>();
+
+            services.AddScoped<IUserRepository<User>, UserRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
             {
