@@ -9,8 +9,8 @@ namespace PetShop.ConsoleApp.Infrastructure
     {
         public static void SeedDB(PetAppContext ctx)
         {
-            ctx.Database.EnsureDeleted();
-            ctx.Database.EnsureCreated();
+            //ctx.Database.EnsureDeleted();
+            //ctx.Database.EnsureCreated();
 
             var owner1 = ctx.Owners.Add(new Owner()
             {
@@ -58,31 +58,33 @@ namespace PetShop.ConsoleApp.Infrastructure
             }).Entity;
 
             string password = "1234";
-            byte[] passwordHashFrederik, passwordSaltFrederik, passwordHashKent, passwordSaltKent;
-            CreatePasswordHash(password, out passwordHashFrederik, out passwordSaltFrederik);
-            CreatePasswordHash(password, out passwordHashKent, out passwordSaltKent);
-            /*
-            var user1 = ctxUser.Users.Add(new User()
+            byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
+            CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
+            CreatePasswordHash(password, out passwordHashAnn, out passwordSaltAnn);
+
+            List<User> users = new List<User>
             {
-                Username = "Frederik",
-                PasswordHash = passwordHashFrederik,
-                PasswordSalt = passwordSaltFrederik,
-                IsAdmin = false 
-            });
+                new User {
+                    Username = "UserJoe",
+                    PasswordHash = passwordHashJoe,
+                    PasswordSalt = passwordSaltJoe,
+                    IsAdmin = false
+                },
+                new User {
+                    Username = "AdminAnn",
+                    PasswordHash = passwordHashAnn,
+                    PasswordSalt = passwordSaltAnn,
+                    IsAdmin = true
+                }
+            };
 
-            var user2 = ctxUser.Users.Add(new User()
-            {
-                Username = "Kent",
-                PasswordHash = passwordHashKent,
-                PasswordSalt = passwordSaltKent,
-                IsAdmin = true
-            });
 
+            ctx.Users.AddRange(users);
+            ctx.SaveChanges();
 
-
-ctxUser.SaveChanges();
-            */
-      ctx.SaveChanges();      
+            
+            
+     
         }
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

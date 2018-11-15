@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PetShop.ConsoleApp.Core.Entities
 {
-    class LoginInputModel
+    public class LoginInputModel
     {
         public string Username { get; set; }
 

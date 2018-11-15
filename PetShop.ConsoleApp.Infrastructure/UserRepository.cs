@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PetShop.ConsoleApp.Core.Domain_Service;
 using PetShop.ConsoleApp.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,13 +8,13 @@ using System.Text;
 
 namespace PetShop.ConsoleApp.Infrastructure
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository<User>
     {
-        private readonly UserAppContext db;
+        private readonly PetAppContext db;
 
-        public UserRepository(UserAppContext ctx)
+        public UserRepository(PetAppContext context)
         {
-            db = ctx;
+            db = context;
         }
 
         public IEnumerable<User> GetAll()

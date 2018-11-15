@@ -61,7 +61,6 @@ namespace PetShopAPI
                 {
 
                     var ctx = scope.ServiceProvider.GetService<PetAppContext>();
-                    var ctxUser = scope.ServiceProvider.GetService<UserAppContext>();
                     DbInitializer.SeedDB(ctx);
                 }
             }
@@ -71,6 +70,7 @@ namespace PetShopAPI
                 {
                     var ctx = scope.ServiceProvider.GetService<PetAppContext>();
                     ctx.Database.EnsureCreated();
+                    DbInitializer.SeedDB(ctx);
                     app.UseHsts();
                 }
                     
